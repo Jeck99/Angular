@@ -1,0 +1,32 @@
+<div class="container">
+    '
+    <h1>This is AddUserForm</h1>
+
+    <form #trvForm="ngForm" (ngSubmit)="submitHandler(trvForm)" class="well form-horizontal">
+        <div class="form-group">
+            <label for="idName"> Name<span *ngIf="trvName.errors && (trvName.dirty || trvName.touched)"
+                 style="color:red">*</span></label>
+            <input name="Name" type="text" id="idName" class="form-control" required
+             [(ngModel)]="arMovieTemp.name" #trvName="ngModel">
+            <div *ngIf="trvName.errors && (trvName.dirty || trvName.touched)" class="alert alert-danger">
+                <div [hidden]="!trvName.errors.required">
+                    Name is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idCatgury"> E-Mail<span *ngIf="trvCatgury.errors && (trvCatgury.dirty || trvCatgury.touched)"
+                 style="color:red">*</span></label>
+            <input name="catgury" type="text" id="idCatgury" class="form-control" required 
+            [(ngModel)]="arMovieTemp.catgury"    #trvEmail="ngModel">
+            <div *ngIf="trvEmail.errors && (trvEmail.dirty || trvEmail.touched)" class="alert alert-danger">
+                <div [hidden]="!trvEmail.errors.required">
+                        Catgury Address is required
+                </div>
+                <div [hidden]="!trvEmail.errors.pattern">
+                    E-Mail Address is worng
+                </div>
+            </div>
+        </div>
+    </form>
+    <router-outlet></router-outlet>

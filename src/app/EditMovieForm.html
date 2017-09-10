@@ -1,0 +1,32 @@
+<div class="form-group">
+    <h1>Edit User Form</h1>
+
+    <form #trvForm="ngForm" (ngSubmit)="submitHandler(trvForm)" class="well form-horizontal" (onIncremented)=" onIncrementedHandler(item)">
+        <div class="form-group">
+            <label for="idName"> Name
+                <span *ngIf="trvName.errors &&
+                 (trvName.dirty || trvName.touched)"
+                 style="color:red">*</span></label>
+            <input name="Name" type="text" id="idName" class="form-control" required [(ngModel)]="arEditTemp.name" #trvName="ngModel">
+            <div *ngIf="trvName.errors && (trvName.dirty || trvName.touched)" class="alert alert-danger">
+                <div [hidden]="!trvName.errors.required">
+                    Name is required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label for="idcatgury">Email Address<span *ngIf="trvCatgury.errors && 
+                (trvCatgury.dirty || trvCatgury.touched)"
+                 style="color:red">*</span></label>
+            <input name="catgury" type="text" id="idcatgury" class="form-control" required [(ngModel)]="arEditTemp.catgury" #trvEmail="ngModel">
+            <div *ngIf="trvCatgury.errors && (trvCatgury.dirty || trvCatgury.touched)" class="alert alert-danger">
+                <div [hidden]="!trvCatgury.errors.required">
+                    Email is required
+                </div>
+            </div>
+        </div>
+        <input type="reset"><br/> <br/>
+        <button [disabled]="!trvForm.valid" type="submit" class="btn btn-primary" >Save</button><br/>
+    </form>
